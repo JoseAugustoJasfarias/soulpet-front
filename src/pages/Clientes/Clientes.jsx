@@ -49,17 +49,17 @@ export function Clientes() {
 
     return (
         <div className="clientes container">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center mt-3">
                 <h1>Clientes</h1>
                 <Button as={Link} to="/clientes/novo">
-                    <i className="bi bi-plus-lg me-2"></i> Cliente
+                    <i className="bi bi-plus-lg me-2"></i>Cliente
                 </Button>
             </div>
             {
                 clientes === null ?
                     <Loader />
                     :
-                    <Table striped bordered hover>
+                    <Table striped bordered hover className="text-center">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -75,7 +75,7 @@ export function Clientes() {
                                         <td>{cliente.nome}</td>
                                         <td>{cliente.email}</td>
                                         <td>{cliente.telefone}</td>
-                                        <td className="d-flex gap-2">
+                                        <td className="d-flex gap-2 d-flex justify-content-center">
                                             <Button onClick={() => handleShow(cliente.id)}>
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
