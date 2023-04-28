@@ -72,9 +72,9 @@ export function Clientes() {
                             {clientes.map(cliente => {
                                 return (
                                     <tr key={cliente.id}>
-                                        <td>{cliente.nome}</td>
-                                        <td>{cliente.email}</td>
-                                        <td>{cliente.telefone}</td>
+                                        <td className="align-middle">{cliente.nome}</td>
+                                        <td className="align-middle">{cliente.email}</td>
+                                        <td className="align-middle">{cliente.telefone}</td>
                                         <td className="d-flex gap-2 d-flex justify-content-center">
                                             <Button onClick={() => handleShow(cliente.id)}>
                                                 <i className="bi bi-trash-fill"></i>
