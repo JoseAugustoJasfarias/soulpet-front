@@ -68,7 +68,7 @@ export function Pets() {
     <div className="clientes container">
       <div className="d-flex justify-content-between align-items-center mt-3">
         <h1>Pets</h1>
-        <Button as={Link}>
+        <Button as={Link} to="/pets/novo">
           <i className="bi bi-plus-lg me-2"></i>Pet
         </Button>
       </div>
@@ -96,10 +96,10 @@ export function Pets() {
                   <td className="align-middle">{pet.dataNasc}</td>
                   <td className="align-middle">{pet.clienteId}</td>
                   <td className="align-middle d-flex gap-2 justify-content-center">
-                    <Button onClick={() => handleShow(pet.id)}>
+                    <Button variant="danger" onClick={() => handleShow(pet.id)}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
-                    <Button as={Link} to={`/pet/editar/${pet.id}`}>
+                    <Button variant="warning" as={Link} to={`/pet/editar/${pet.id}`}>
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
                     <Button onClick={() => handleShowInfo(pet.id, pet)}>
