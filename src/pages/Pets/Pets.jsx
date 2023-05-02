@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Modal, Table } from "react-bootstrap";
+import { Button, Modal, Pagination, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { toast } from "react-hot-toast";
@@ -11,6 +11,30 @@ export function Pets() {
   const [showInfo, setShowInfo] = useState(false);
   const [idPet, setIdPet] = useState(null);
   const [petModal, setpetModal] = useState();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(7);
+  const [totalItems, setTotalItems] = useState(0);
+
+  function initializeTable() {
+    const skip = (currentPage - 1) * itemsPerPage;
+    const limit = itemsPerPage;
+    axios
+      .get(`http://localhost:3001/pets?skip=${skip}&limit=${limit}`)
+      .then((response) => {
+        setPets(response.data);
+        setTotalItems(response.headers["x-total-count"]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function getPetsForCurrentPage() {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return pets.slice(startIndex, endIndex);
+  }
 
   const handleClose = () => {
     setIdPet(null);
@@ -32,18 +56,8 @@ export function Pets() {
 
   useEffect(() => {
     initializeTable();
-  }, []);
+  }, [currentPage, itemsPerPage]);
 
-  function initializeTable() {
-    axios
-      .get("http://localhost:3001/pets")
-      .then((response) => {
-        setPets(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
   function onDelete() {
     axios
       .delete(`http://localhost:3001/pets/${idPet}`)
@@ -63,6 +77,8 @@ export function Pets() {
       });
     handleClose();
   }
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
     <div className="clientes container">
@@ -87,7 +103,7 @@ export function Pets() {
             </tr>
           </thead>
           <tbody>
-            {pets.map((pet) => {
+            {getPetsForCurrentPage().map((pet) => {
               return (
                 <tr key={pet.id}>
                   <td className="align-middle">{pet.nome}</td>
@@ -99,7 +115,11 @@ export function Pets() {
                     <Button variant="danger" onClick={() => handleShow(pet.id)}>
                       <i className="bi bi-trash-fill"></i>
                     </Button>
-                    <Button variant="warning" as={Link} to={`/pet/editar/${pet.id}`}>
+                    <Button
+                      variant="warning"
+                      as={Link}
+                      to={`/pet/editar/${pet.id}`}
+                    >
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
                     <Button onClick={() => handleShowInfo(pet.id, pet)}>
@@ -112,6 +132,65 @@ export function Pets() {
           </tbody>
         </Table>
       )}
+
+      <Pagination className="justify-content-center">
+        <Pagination.First
+          onClick={() => setCurrentPage(1)}
+          disabled={currentPage === 1}
+        />
+        <Pagination.Prev
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        />
+
+        {Array.from(
+          { length: Math.ceil(pets.length / itemsPerPage) },
+          (_, index) => {
+            const pageNumber = index + 1;
+            const startIndex = (pageNumber - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const isCurrentPage = pageNumber === currentPage;
+            const hasContent = pets.slice(startIndex, endIndex).length > 0;
+
+            if (hasContent) {
+              return (
+                <Pagination.Item
+                  key={index}
+                  active={isCurrentPage}
+                  onClick={() => setCurrentPage(pageNumber)}
+                >
+                  {pageNumber}
+                </Pagination.Item>
+              );
+            } else {
+              return (
+                <Pagination.Item key={index} disabled>
+                  {pageNumber}
+                </Pagination.Item>
+              );
+            }
+          }
+        )}
+
+        <Pagination.Next
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={
+            !pets.slice(
+              currentPage * itemsPerPage,
+              (currentPage + 1) * itemsPerPage
+            ).length
+          }
+        />
+        <Pagination.Last
+          onClick={() => setCurrentPage(Math.ceil(pets.length / itemsPerPage))}
+          disabled={currentPage === Math.ceil(pets.length / itemsPerPage)}
+        />
+
+        <Pagination.Item active>
+          Página {currentPage} de {Math.ceil(pets.length / itemsPerPage)}
+        </Pagination.Item>
+      </Pagination>
+
       <Modal show={showInfo} onHide={handleCloseInfo}>
         <Modal.Header closeButton>
           <Modal.Title>Informações do Pet</Modal.Title>
