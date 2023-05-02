@@ -23,7 +23,7 @@ export function NovoCliente() {
 
     return (
         <div className="container">
-            <h1>Novo Cliente</h1>
+            <h1 className="mt-3">Novo Cliente</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3">
                     <Form.Label>Nome</Form.Label>
