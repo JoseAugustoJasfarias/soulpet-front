@@ -108,18 +108,20 @@ export function Produtos() {
             <div className="d-flex justify-content-between align-items-center mt-2 mb-1">
                 <h1>Produtos</h1>
                 <Button as={Link} to="/produtos/novo" className="btn btn-secondary">
-                    Adicionar Produtos
+                    <i className="bi bi-plus-lg me-2"/> Produto
                 </Button>
             </div>
-            <Table striped bordered hover>
+            <Table striped bordered hover className="text-center">
                 <thead className="p-2 m-2">
-                    <th>Nome</th>
-                    <th>Preço</th>
-                    <th>Descrição</th>
-                    <th>Desconto</th>
-                    <th>Data Desconto</th>
-                    <th>Categoria</th>
-                    <th>Ações</th>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                        <th>Desconto</th>
+                        <th>Data Desconto</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {
@@ -131,7 +133,7 @@ export function Produtos() {
                                         <td>{produto.nome}</td>
                                         <td>R$ {produto.preco}</td>
                                         <td>{produto.descricao}</td>
-                                        <td>{produto.desconto}</td>
+                                        <td>{(produto.desconto)*100}%</td>
                                         <td>{new Date(produto.dataDesconto).toLocaleDateString()}</td>
                                         <td>{produto.categoria}</td>
                                         <td className="d-flex gap-2">
@@ -152,7 +154,7 @@ export function Produtos() {
                                         <td>{produto.nome}</td>
                                         <td>R$ {produto.preco}</td>
                                         <td>{produto.descricao}</td>
-                                        <td>{produto.desconto}</td>
+                                        <td>{(produto.desconto)*100}%</td>
                                         <td>{new Date(produto.dataDesconto).toLocaleDateString()}</td>
                                         <td>{produto.categoria}</td>
                                         <td className="d-flex gap-2">
