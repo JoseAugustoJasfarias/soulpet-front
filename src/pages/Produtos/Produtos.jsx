@@ -1,8 +1,9 @@
-import { Button, Form, InputGroup, Table } from "react-bootstrap";
+import { Button, Form, InputGroup, Modal, Table } from "react-bootstrap";
 import {useState, useEffect} from "react"
 import axios from "axios";
 import { Loader } from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 
 export function Produtos() {
@@ -46,6 +47,31 @@ export function Produtos() {
         })
     };
 
+    /////// MODAL////////
+    const [show,setShow] = useState(false);
+    const [idProduto, setIdProduto] = useState(null);
+
+    function handleClose() {
+        setIdProduto(false);
+        setShow(false);
+    }
+
+    function handleShow(id){
+        setIdProduto(id);
+        setShow(true);
+    }
+
+    function deletarProduto() {
+        axios.delete(`http://localhost:3001/produto/${idProduto}`)
+        .then(response => {
+            toast.success(response.data.message,{position:"bottom-right",duration:2000});
+            obterDados();
+        }).catch (error => {
+            console.log(error);
+            toast.error(error.response.data.message,{position:"bottom-right", duration:2000});
+        });
+        handleClose();
+    }
     
 
     return(
@@ -130,7 +156,7 @@ export function Produtos() {
                                         <td>{new Date(produto.dataDesconto).toLocaleDateString()}</td>
                                         <td>{produto.categoria}</td>
                                         <td className="d-flex gap-2">
-                                            <Button className="btn btn-danger">
+                                            <Button onClick={()=> handleShow(produto.id)} className="btn btn-danger">
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
                                             <Button as={Link} to={`/produtos/editar/${produto.id}`} className="btn btn-warning">
@@ -147,6 +173,21 @@ export function Produtos() {
                 }
                 </tbody>
             </Table>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmação</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Tem certeza que deseja excluir o produto?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="danger" onClick={deletarProduto}>
+                        Excluir
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
 }
