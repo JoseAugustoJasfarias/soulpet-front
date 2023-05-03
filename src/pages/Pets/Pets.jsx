@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Button, Modal, Pagination, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -11,12 +11,11 @@ export function Pets() {
   const [showInfo, setShowInfo] = useState(false);
   const [idPet, setIdPet] = useState(null);
   const [petModal, setpetModal] = useState();
-
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(7);
+  const [itemsPerPage] = useState(6);
   const [totalItems, setTotalItems] = useState(0);
 
-  function initializeTable() {
+  const initializeTable = useCallback(() => {
     const skip = (currentPage - 1) * itemsPerPage;
     const limit = itemsPerPage;
     axios
@@ -28,7 +27,7 @@ export function Pets() {
       .catch((error) => {
         console.log(error);
       });
-  }
+  }, [currentPage, itemsPerPage]);
 
   function getPetsForCurrentPage() {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -56,7 +55,7 @@ export function Pets() {
 
   useEffect(() => {
     initializeTable();
-  }, [currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, initializeTable]);
 
   function onDelete() {
     axios
@@ -78,7 +77,7 @@ export function Pets() {
     handleClose();
   }
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  Math.ceil(totalItems / itemsPerPage);
 
   return (
     <div className="clientes container">
