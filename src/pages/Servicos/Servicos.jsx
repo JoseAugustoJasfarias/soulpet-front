@@ -58,7 +58,7 @@ export function Servicos() {
     <div className="servicos container">
       <div className="d-flex justify-content-between align-items-center mt-3">
         <h1>Servicos</h1>
-        <Button as={Link}>
+        <Button  as={Link} to="/servico/novo">
           <i className="bi bi-plus-lg me-2"></i>Serviço
         </Button>
       </div>
@@ -81,10 +81,12 @@ export function Servicos() {
                     <td className="align-middle">{cliente.nome}</td>
                     <td className="align-middle">{cliente.preco}</td>
                     <td className="d-flex gap-2 d-flex justify-content-center">
-                      <Button onClick={() => handleShow(cliente.id)}>
+                      <Button variant="danger" onClick={() => handleShow(cliente.id)}>
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button>
+                      <Button variant="warning"
+                      as={Link}
+                      to={`/servico/editar/${cliente.id}`}>
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
                     </td>
