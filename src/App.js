@@ -10,6 +10,8 @@ import { NovoProduto } from "./pages/NovoProduto/NovoProduto";
 import { NovoPet } from "./pages/NovoPet/NovoPet";
 import { EditarPets } from "./pages/EditarPets/EditarPets";
 import { Servicos } from "./pages/Servicos/Servicos";
+import { NovoPedido } from "./pages/NovoPedido/NovoPedido";
+import {Pedidos} from "./pages/Pedidos/Pedidos";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/clientes/editar/:id" element={<EditaCliente />} />
           <Route path="/produtos" element={<Produtos/>} />
           <Route path="/produtos/novo" element={<NovoProduto/>} />
+          <Route path="/pedidos" element={<Pedidos/>}/>
+          <Route path="/pedidos/novo" element={<NovoPedido/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
