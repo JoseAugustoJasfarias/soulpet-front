@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# SoulPet - FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O projeto em questão é um site de petshop, que permite aos usuários gerenciar facilmente clientes, pets, produtos, serviços e pedidos, além de acessar um dashboard para visualizar estatísticas do site. Para isso, o site conta com rotas específicas para cada recurso, permitindo consultar, editar e deletar. Com uma interface de usuário intuitiva, o site oferece uma experiência agradável e eficiente para gerenciar todas as operações relacionadas ao petshop.
 
-## Available Scripts
+## 🚀 Começando
 
-In the project directory, you can run:
+Com estas instruções, você será capaz de obter uma cópia do projeto em execução em sua máquina local para fins de desenvolvimento e teste.
 
-### `npm start`
+# Pré-requisitos;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Antes de prosseguir, certifique-se de ter instalado o seguinte:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**1.** GitBash - para clonar o repositório;
 
-### `npm test`
+**2.** Banco de dados MySQL;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**3.** Back-end do SoulPet configurado;
 
-### `npm run build`
+# Clonando o repositório e instalação;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para clonar o repositório do SoulPet-FrontEnd, siga os passos abaixo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**1 -** Abra o GitBash.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**2 -** Crie uma pasta em sua localização de preferência.
 
-### `npm run eject`
+**3 -** Acesse a pasta usando o comando cd no GitBash.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**4 -** Execute o seguinte comando para clonar o repositório:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**[git clone https://github.com/JoseAugustoJasfarias/soulpet-front]**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**5 -** Depois de clonar o repositório, instale as dependências do projeto:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**[npm install]**
 
-## Learn More
+**6 -** Inicie o servidor local:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**[npm start]**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**7 -**  Back-end rodando.
 
-### Code Splitting
+**8 -** Adicione dados utilizando as funções disponíveis no projeto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Você pode adicionar dados utilizando as funções disponíveis no projeto rodando.
 
-### Analyzing the Bundle Size
+## 📦 Implantação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Tenha o back-end e adicione o projeto de em um local de hospodagem 24h com banco de dados, adquira um dominio e poderá deixar 100% disponivel para clientes.
 
-### Making a Progressive Web App
+## 🛠️ Construído com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* [React](https://react.dev) - O framework web usado
+* [Node.js](https://nodejs.org/en) - Gerente de Dependência
 
-### Advanced Configuration
+## ✨ Dependências usadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* axios: "^1.3.6",
+* bootstrap: "^5.2.3",
+* bootstrap-icons: "^1.10.4",
+* date-fns: "^2.30.0",
+* react-bootstrap: "^2.7.4",
+* react-dom: "^18.2.0",
+* react-hook-form: "^7.43.9",
+* react-hot-toast: "^2.4.0",
+* react-router-dom: "^6.10.0",
+* react-scripts: "5.0.1",
+* web-vitals: "^2.1.4"
 
-### Deployment
+## ✒️ Autores
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Lucas Damasceno** - *Desenvolvedor full-stack/documentação* - [Lucas Damasceno](https://github.com/LuhD1)
+* **Jose Augusto** - *Desenvolvedor full-stack* - [José Augusto](https://github.com/JoseAugustoJasfarias)
+* **Lais Belo** - *Desenvolvedora full-stack* - [Lais Belo](https://github.com/Laisbelo)
+* **Victoria Dourado Scapini** - *Desenvolvedora full-stack* - [Victoria Scapini](https://github.com/VicScapini)
+* **Lucas Velsch** - *Desenvolvedora full-stack* - [Lucas Velsch](https://github.com/Velsch21)
