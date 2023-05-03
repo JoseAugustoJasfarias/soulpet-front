@@ -12,6 +12,7 @@ import { EditarPets } from "./pages/EditarPets/EditarPets";
 import { Servicos } from "./pages/Servicos/Servicos";
 import { NovoPedido } from "./pages/NovoPedido/NovoPedido";
 import {Pedidos} from "./pages/Pedidos/Pedidos";
+import { DashBoard } from "./pages/DashBoard/DashBoard";  
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/produtos/novo" element={<NovoProduto/>} />
           <Route path="/pedidos" element={<Pedidos/>}/>
           <Route path="/pedidos/novo" element={<NovoPedido/>}/>
+          <Route path="/dashboard" element={<DashBoard/>} />
         </Route>
       </Routes>
     </BrowserRouter>
