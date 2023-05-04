@@ -113,10 +113,10 @@ export function Pedidos() {
 
   return (
     <div className="pedidos container">
-      <div className="d-flex justify-content-between align-items-center mt-4">
+      <div className="d-flex justify-content-between align-items-center mt-3">
         <h1>Pedidos</h1>
         <Button as={Link} to="/pedidos/novo">
-        <i className="bi bi-plus-lg me-2"></i>Pedido
+          <i className="bi bi-plus-lg me-2"></i>Pedido
         </Button>
       </div>
       <div className="m-3">
@@ -130,7 +130,9 @@ export function Pedidos() {
             >
               <option value="">Digite o nome do cliente</option>
               {clientes.map((cliente) => (
-                <option  key={cliente.id} value={cliente.nome}>{cliente.nome}</option>
+                <option key={cliente.id} value={cliente.nome}>
+                  {cliente.nome}
+                </option>
               ))}
             </Form.Select>
           </Col>
@@ -143,7 +145,9 @@ export function Pedidos() {
             >
               <option value="">Digite o nome do produto</option>
               {produtos.map((produto) => (
-                <option key={produto.id}  value={produto.nome}>{produto.nome}</option>
+                <option key={produto.id} value={produto.nome}>
+                  {produto.nome}
+                </option>
               ))}
             </Form.Select>
           </Col>
@@ -155,12 +159,14 @@ export function Pedidos() {
       {pedidos === null ? (
         <Loader />
       ) : (
-        <Table striped bordered hover>
+        <div className="table-responsive">
+          <Table striped bordered hover className="text-center">
           <thead>
             <tr>
               <th>Quantidade</th>
               <th>Cliente</th>
               <th>Produto</th>
+              <th>ID do Pedido</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -171,10 +177,11 @@ export function Pedidos() {
               .map((pedido) => {
                 return (
                   <tr>
-                    <td>{pedido.quantidade}</td>
-                    <td>{pedido.cliente.nome}</td>
-                    <td>{pedido.produto.nome}</td>
-                    <td className="d-flex gap-2">
+                    <td className="align-middle">{pedido.quantidade}</td>
+                    <td className="align-middle">{pedido.cliente.nome}</td>
+                    <td className="align-middle">{pedido.produto.nome}</td>
+                    <td className="align-middle">{pedido.produto.id}</td>
+                    <td className="d-flex gap-2 ">
                       <Button onClick={() => handleShow(pedido.codigo)}>
                         <i className="bi bi-trash-fill"></i>
                       </Button>
@@ -190,6 +197,7 @@ export function Pedidos() {
               })}
           </tbody>
         </Table>
+        </div>
       )}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
