@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Button, Modal, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Loader } from "../../components/Loader/Loader";
-import { toast } from "react-hot-toast";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Button, Modal, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
+import { toast } from 'react-hot-toast';
 
 export function Clientes() {
   const [clientes, setClientes] = useState(null);
@@ -14,7 +14,7 @@ export function Clientes() {
     setIdCliente(null);
     setShow(false);
   };
-  const handleShow = (id) => {
+  const handleShow = id => {
     setIdCliente(id);
     setShow(true);
   };
@@ -25,11 +25,11 @@ export function Clientes() {
 
   function initializeTable() {
     axios
-      .get("http://localhost:3001/clientes")
-      .then((response) => {
+      .get('http://localhost:3001/clientes')
+      .then(response => {
         setClientes(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
@@ -37,18 +37,18 @@ export function Clientes() {
   function onDelete() {
     axios
       .delete(`http://localhost:3001/clientes/${idCliente}`)
-      .then((response) => {
+      .then(response => {
         toast.success(response.data.message, {
-          position: "bottom-right",
-          duration: 2000,
+          position: 'bottom-right',
+          duration: 2000
         });
         initializeTable();
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         toast.error(error.response.data.message, {
-          position: "bottom-right",
-          duration: 2000,
+          position: 'bottom-right',
+          duration: 2000
         });
       });
     handleClose();
@@ -75,7 +75,7 @@ export function Clientes() {
             </tr>
           </thead>
           <tbody>
-            {clientes.map((cliente) => {
+            {clientes.map(cliente => {
               return (
                 <tr key={cliente.id}>
                   <td className="align-middle">{cliente.nome}</td>
@@ -116,6 +116,14 @@ export function Clientes() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <div className="d-flex justify-content-end">
+        <Button
+          onClick={() => window.open('http://localhost:3001/relatorio')}
+          className=""
+        >
+          <i class="bi bi-filetype-pdf"></i> Relatório
+        </Button>
+      </div>
     </div>
   );
 }
