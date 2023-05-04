@@ -97,6 +97,10 @@ export function Clientes() {
                     >
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
+                    <Button as={Link}  to={`/clientes/detalhes/${cliente.id}`}
+                     >
+                      <i className="bi bi-info-circle"></i>
+                    </Button>
                   </td>
                 </tr>
               );

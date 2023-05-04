@@ -19,6 +19,7 @@ import { NovoAgendamento } from "./pages/NovoAgendamento/NovoAgendamento";
 import { Agendamentos } from "./pages/Agendamentos/Agendamentos";
 import { EditaPedido } from "./pages/EditaPedido/EditaPedido";
 import { EditarProduto } from "./pages/EditarProduto/EditarProduto";
+import { DetalheClientes } from "./pages/DetalhesCliente/DetalhesCliente";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/agendamentos/novo" element={<NovoAgendamento/>} />
           <Route path="/agendamentos" element={<Agendamentos/>} />
+          <Route path="/clientes/detalhes/:id" element={<DetalheClientes/>} />
         </Route>
       </Routes>
     </BrowserRouter>
