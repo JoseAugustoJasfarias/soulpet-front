@@ -11,7 +11,12 @@ export function NovoAgendamento() {
 
     
     function onSubmit(data) {
-        axios.post("http://localhost:3001/agendamentos", data)
+        const agendamento = {
+            agendamento:[
+                data
+            ]
+        }
+        axios.post("http://localhost:3001/agendamentos", agendamento)
         .then(response => {
             toast.success("Agendamento adicionado.", { position: "bottom-right", duration: 2000 });
             navigate("/agendamentos");

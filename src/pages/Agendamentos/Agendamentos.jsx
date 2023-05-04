@@ -33,9 +33,9 @@ export function Agendamentos() {
 
     return (
         <div className="servicos container">
-            <div className="d-flex justify-content-between align-items-center mt-3">
+            <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
                 <h1>Agendamentos</h1>
-                <Button variant="info" as={Link}>
+                <Button variant="primary" as={Link} to="/agendamentos/novo">
                     <i className="bi bi-plus-lg me-2"></i>Agendamento
                 </Button>
             </div>
