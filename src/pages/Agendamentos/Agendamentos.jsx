@@ -6,7 +6,7 @@ import { Loader } from "../../components/Loader/Loader";
 
 export function Agendamentos() {
     const [agendamentos, setAgendamentos] = useState(null);
-    // const [status, setStatus] = useState(null)
+  
 
     useEffect(() => {
         initializeTable();
@@ -22,14 +22,6 @@ export function Agendamentos() {
                 console.log(error);
             });
     }
-
-    // function onStatus(status) {
-    //     if (status === 1) {
-    //         status = "Concluído"
-    //     } else {
-    //         status = "Não concluído"
-    //     }
-    // }
 
     return (
         <div className="servicos container">
