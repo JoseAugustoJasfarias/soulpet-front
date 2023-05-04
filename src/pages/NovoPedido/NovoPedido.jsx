@@ -13,6 +13,8 @@ export function NovoPedido() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+
   const [produtos, setProdutos] = useState([]);
   const [clientes, setClientes] = useState([]);
   const navigate = useNavigate();
@@ -43,6 +45,11 @@ export function NovoPedido() {
   }, []);
 
   function onSubmit(data) {
+    const pedidos = {
+      pedidos:[
+          data
+      ]
+  }
     axios
       .post("http://localhost:3001/pedidos", data)
       .then((response) => {
@@ -154,7 +161,7 @@ export function NovoPedido() {
           ))}
           <div className="mb-3">
             <Button variant="primary" onClick={() => append({ name: "" })}>
-              Adicionar novo produto
+              Adicionar novo Pedido
             </Button>
           </div>
         </Form>
