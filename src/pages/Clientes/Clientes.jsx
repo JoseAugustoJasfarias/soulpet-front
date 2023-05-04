@@ -71,6 +71,7 @@ export function Clientes() {
               <th>Nome</th>
               <th>E-mail</th>
               <th>Telefone</th>
+              <th>ID do Cliente</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -81,6 +82,7 @@ export function Clientes() {
                   <td className="align-middle">{cliente.nome}</td>
                   <td className="align-middle">{cliente.email}</td>
                   <td className="align-middle">{cliente.telefone}</td>
+                  <td className="align-middle">{cliente.id}</td>
                   <td className="d-flex gap-2 d-flex justify-content-center">
                     <Button
                       variant="danger"

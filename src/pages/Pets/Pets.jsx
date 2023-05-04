@@ -97,6 +97,7 @@ export function Pets() {
               <th>Tipo</th>
               <th>Porte</th>
               <th>Data de Nascimento</th>
+              <th>ID do Pet</th>
               <th>ID do Cliente</th>
               <th>Ações</th>
             </tr>
@@ -109,6 +110,7 @@ export function Pets() {
                   <td className="align-middle">{pet.tipo}</td>
                   <td className="align-middle">{pet.porte}</td>
                   <td className="align-middle">{pet.dataNasc}</td>
+                  <td className="align-middle">{pet.id}</td>
                   <td className="align-middle">{pet.clienteId}</td>
                   <td className="align-middle d-flex gap-2 justify-content-center">
                     <Button variant="danger" onClick={() => handleShow(pet.id)}>
